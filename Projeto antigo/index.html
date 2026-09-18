@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBEC - Igreja Batista Esperança</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="logo-box">
+        <img src="imagens/Logo.jpeg" alt="Logo IBEC" class="logo">
+      </div>
+
+      <div class="hero-text">
+
+        <h1>IBEC</h1>
+        <p>UMA IGREJA QUE AMA</p>
+
+        <div class="hero-buttons">
+
+          <a class="btn-outline" href="#local">📍 Venha nos visitar</a>
+
+          <a class="btn-outline"
+            href="https://wa.me/5541998071645?text=Olá,%20quero%20visitar%20a%20IBEC">
+            📅 Quero visitar
+          </a>
+
+          <a class="btn-outline"
+            href="https://wa.me/5541998071645?text=Olá,%20quero%20pedir%20oração">
+            🙏 Pedir oração
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MENU -->
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#agenda">Agenda</a>
+    <a href="#videos">Vídeos</a>
+    <a href="#projeto">Projeto Esperança</a>
+    <a href="#dizimos">Dízimos e Ofertas</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#local">Localização</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="card reveal">
+    <h2>Sobre a Igreja</h2>
+    <p>Amar a Deus, amar ao próximo e servir esta geração.</p>
+  </section>
+
+  <!-- AGENDA -->
+  <section id="agenda" class="card reveal">
+    <h2>Agenda de Cultos</h2>
+
+    <div class="agenda-item">
+      <strong>Domingo</strong> - 09h (Escola Bíblica Dominical)
+    </div>
+
+    <div class="agenda-item">
+      <strong>Domingo</strong> - 10h (Culto de Adoração)
+    </div>
+
+     <div class="agenda-item">
+      <strong>Último Domingo del Mes, Culto en español.</strong> - 11h (Culto em Espanhol)
+    </div>
+
+    <div class="agenda-item">
+      <strong>Domingo</strong> - 18h (Culto de Adoração)
+    </div>
+
+    <div class="agenda-item">
+      <strong>Terça-feira</strong> - 20h (Culto de Libertação)
+    </div>
+
+    <div class="agenda-item">
+      <strong>Último Sábado do Mês Culto de Jovens</strong> - 18h (Culto de Jovens)
+    </div>
+
+  </section>
+
+  <!-- VÍDEOS -->
+  <section id="videos" class="card reveal">
+    <h2>Vídeos da IBEC</h2>
+
+    <div class="video-preview" onclick="openVideo('vídeos/Família.mp4')">
+      <video muted playsinline>
+        <source src="vídeos/Família.mp4" type="video/mp4">
+      </video>
+
+      <div class="play-button">▶</div>
+    </div>
+
+  </section>
+
+  <!-- MODAL -->
+  <div class="video-modal" id="videoModal">
+    <span class="close-video" onclick="closeVideo()">✕</span>
+
+    <video controls id="mainVideo"></video>
+  </div>
+
+  <!-- PROJETO ESPERANÇA -->
+    <section id="projeto" class="card reveal">
+
+      <h2>Projeto Esperança</h2>
+
+      <p>
+        O Projeto Esperança é uma iniciativa da IBEC para ajudar famílias,
+        levar alimento, apoio espiritual e amor ao próximo.
+      </p>
+
+      <div class="projeto-agenda">
+      <strong>Quarta-feira</strong> - 16h (Pilates)
+      </div>
+      
+      <div class="projeto-agenda">
+      <strong>Sábado</strong> - 09h (Balé)
+      </div>
+
+      <div class="projeto-agenda">
+      <strong>Sábado</strong> - 11h (Feirão Solidário)
+      </div>
+
+      <div class="projeto-agenda">
+      <strong>Sábado</strong> - 15h (Futebol)
+      </div>
+
+      <a class="btn-projeto"
+     href="https://wa.me/554195798704?text=Olá,%20quero%20me%20inscrever%20no%20Projeto%20Esperança"
+     target="_blank">
+     Inscreva-se no Projeto Esperança
+      </a>
+      
+    </section>
+    
+    <!-- DÍZIMOS E OFERTAS -->
+    <section id="dizimos" class="card reveal">
+
+      <div class="dizimo-header">
+
+        <span class="dizimo-tag">
+         Fidelidade
+        </span>
+
+        <h2>Dízimos e Ofertas</h2>
+
+        <p>
+          Através da sua fidelidade e generosidade, a IBEC continua
+          cumprindo sua missão de amar pessoas, anunciar o Evangelho
+          e desenvolver projetos que transformam vidas.
+        </p>
+
+        <blockquote>
+          "Cada um contribua segundo tiver proposto no coração,
+          não com tristeza ou por necessidade; porque Deus ama ao que dá com alegria."
+          <strong>2 Coríntios 9:7</strong>
+        </blockquote>
+
+      </div>
+
+      <div class="pix-card">
+
+        <div class="pix-info">
+
+          <h3>PIX IBEC</h3>
+
+          <p>Contribua utilizando nossa chave PIX:</p>
+
+          <div class="pix-chave" id="pixKey">
+            03.074.173/0001-42
+          </div>
+
+          <button class="pix-btn" onclick="copiarPix()">
+            Copiar Chave PIX
+          </button>
+
+        </div>
+
+        <div class="pix-qrcode">
+
+          <span class="qrcode-label">
+            Escaneie com o aplicativo do seu banco
+          </span>
+
+          <img
+            src="imagens/qr-code.jpg"
+            alt="QR Code PIX IBEC">
+
+        </div>
+
+      </div>
+
+      <div class="dizimos-layout">
+
+        <h3>Destino das Contribuições</h3>
+
+        <p>
+          Ao realizar sua contribuição, informe o código correspondente:
+        </p>
+
+        <div class="categorias-grid">
+
+          <div class="categoria-card">
+            <strong>R$00.01</strong>
+            <span>Dízimo</span>
+          </div>
+
+          <div class="categoria-card">
+            <strong>R$00.02</strong>
+            <span>Oferta</span>
+          </div>
+
+          <div class="categoria-card">
+            <strong>R$00.03</strong>
+            <span>Missões</span>
+          </div>
+
+          <div class="categoria-card">
+            <strong>R$00.04</strong>
+            <span>Projeto Esperança</span>
+          </div>
+
+          <div class="categoria-card">
+            <strong>R$00.05</strong>
+            <span>Construção</span>
+          </div>
+
+          <div class="categoria-card">
+            <strong>R$00.06</strong>
+            <span>Ministério Jovem</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  <!-- GALERIA -->
+  <section id="galeria" class="card reveal">
+    <h2>Galeria</h2>
+
+    <a class="btn" href="https://instagram.com/ibec.curitiba" target="_blank">
+      📸 Ver Instagram da IBEC
+    </a>
+  </section>
+
+  <!-- LOCAL -->
+  <section id="local" class="card reveal">
+    <h2>Localização</h2>
+
+    <p>Rua Mandirituba, 1490 - Sítio Cercado</p>
+
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!4v1779458633434!6m8!1m7!1sJX3UW_SkJEZK8kAZ3lmSQw!2m2!1d-25.54600685065386!2d-49.27194889446583!3f246.25!4f0!5f0.7820865974627469"
+      width="100%"
+      height="300"
+      style="border:0; border-radius:10px;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="card reveal">
+    <h2>Contato</h2>
+    <p>WhatsApp: (41) 99807-1645</p>
+    <p>Instagram: @ibec.curitiba</p>
+    <p>Email: ibesperanca.cwb@gmail.com</p>
+  </section>
+
+  <!-- WHATSAPP -->
+  <a class="whatsapp-float" href="https://wa.me/5541998071645" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30">
+  </a>
+
+  <!-- JS EXTERNO -->
+  <script src="script.js"></script>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 IBEC - Igreja Batista Esperança</p>
+  </footer>
+
+</body>
+</html>
