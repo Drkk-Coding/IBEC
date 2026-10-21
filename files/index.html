@@ -13,7 +13,6 @@
 <style>
 /* =========================================================
    Igreja Batista Esperança — identidade visual
-   Dourado/amarelo do logo + branco + verde-folha + tinta
    ========================================================= */
 :root{
   --gold:#F3C233; --gold-deep:#D9A310; --gold-pale:#FCEBB0;
@@ -130,7 +129,7 @@ button{font-family:inherit;cursor:pointer}
 .projeto-lede{color:rgba(255,255,255,.92);font-size:1.1rem}
 .projeto-sub{color:rgba(255,255,255,.75);font-size:.98rem;margin-top:.9rem}
 
-.pilares{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-bottom:3rem}
+.pilares{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.1rem;margin-bottom:3rem}
 .pilar{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:var(--radius);padding:1.5rem 1.3rem}
 .pilar-ico{font-size:1.6rem;display:block;margin-bottom:.6rem}
 .pilar h4{color:var(--white);font-size:1.05rem;margin-bottom:.4rem}
@@ -148,6 +147,11 @@ button{font-family:inherit;cursor:pointer}
 .agenda-info p{color:rgba(255,255,255,.82);font-size:.9rem}
 .btn-projeto{display:inline-flex;align-items:center;justify-content:center;width:100%;margin-top:1.6rem;background:var(--gold);color:var(--ink);font-weight:700;padding:.95em 1.5em;border-radius:100px;text-align:center;transition:transform .18s,background .18s}
 .btn-projeto:hover{background:var(--white);transform:translateY(-2px)}
+.doacao-box{margin-top:1.2rem;background:rgba(255,255,255,.1);border:1px dashed rgba(255,255,255,.35);border-radius:14px;padding:1.1rem 1.2rem}
+.doacao-box strong{display:block;color:var(--white);font-size:.98rem;margin-bottom:.4rem}
+.doacao-box p{color:rgba(255,255,255,.82);font-size:.86rem;margin-bottom:.7rem}
+.doacao-box a{display:inline-block;font-weight:700;font-size:.86rem;color:var(--gold)}
+.doacao-box a:hover{text-decoration:underline}
 .projeto-stats{display:grid;gap:1.1rem}
 .stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:1.5rem;text-align:center}
 .stat-num{display:block;font-family:var(--font-display);font-size:2.3rem;font-weight:600;color:var(--gold)}
@@ -293,7 +297,7 @@ button{font-family:inherit;cursor:pointer}
     </div>
     <div class="hero-schedule">
       <div><strong>Domingo</strong><span>18h · Culto de Celebração</span></div>
-      <div><strong>Quarta</strong><span>20h · Culto de Oração</span></div>
+      <div><strong>Terça</strong><span>19:30h · Culto nos Lares</span></div>
       <div><strong>Sábado</strong><span>Projeto Esperança na comunidade</span></div>
     </div>
   </div>
@@ -331,7 +335,7 @@ button{font-family:inherit;cursor:pointer}
     <div class="projeto-head reveal">
       <span class="tag tag-on-green">Ação social · Impacto comunitário</span>
       <h2>Projeto Esperança</h2>
-      <p class="projeto-lede">O Projeto Esperança é o braço social da Igreja Batista Esperança: um programa permanente e <strong>gratuito</strong> que oferece atividades de saúde, educação, cultura, esporte e segurança alimentar às famílias do bairro — abertas a todos, independentemente de religião, renda ou vínculo com a igreja.</p>
+      <p class="projeto-lede">O Projeto Esperança é o braço social da Igreja Batista Esperança: um programa permanente e <strong>gratuito</strong> que oferece atividades de saúde, educação, cultura, esporte e segurança alimentar às famílias do bairro e acolhimento a moradores de rua — abertas a todos, independentemente de religião, renda ou vínculo com a igreja.</p>
       <p class="projeto-sub">Mais do que assistência pontual, o projeto busca criar vínculos duradouros: as mesmas famílias retornam toda semana, formando uma rede de apoio mútuo que fortalece o tecido social do bairro.</p>
     </div>
 
@@ -356,6 +360,11 @@ button{font-family:inherit;cursor:pointer}
         <h4>Vínculo comunitário</h4>
         <p>Espaço de convivência, escuta e apoio espiritual que combate o isolamento social.</p>
       </div>
+      <div class="pilar">
+        <span class="pilar-ico">🍲</span>
+        <h4>Acolhimento à população de rua</h4>
+        <p>Sopão Solidário semanal, com alimento quente e a Palavra levada a moradores de rua.</p>
+      </div>
     </div>
 
     <div class="projeto-body">
@@ -367,6 +376,14 @@ button{font-family:inherit;cursor:pointer}
           <div class="agenda-info">
             <strong>Pilates</strong>
             <p>Aula de bem-estar, mobilidade e saúde para adultos e idosos da comunidade.</p>
+          </div>
+        </div>
+
+        <div class="projeto-agenda">
+          <div class="agenda-dia"><span class="agenda-semana">Quarta</span><span class="agenda-hora">19h</span></div>
+          <div class="agenda-info">
+            <strong>Sopão Solidário</strong>
+            <p>Sopa quente e alimentos para moradores de rua, com uma palavra de fé e acolhimento.</p>
           </div>
         </div>
 
@@ -397,18 +414,24 @@ button{font-family:inherit;cursor:pointer}
         <a class="btn-projeto" href="https://wa.me/5541998071645?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20Projeto%20Esperan%C3%A7a" target="_blank" rel="noopener noreferrer">
           Inscreva-se no Projeto Esperança
         </a>
+
+        <div class="doacao-box">
+          <strong>🍲 Ajude o Sopão Solidário com doações</strong>
+          <p>Toda quarta-feira produzimos e distribuímos sopa e alimentos para moradores de rua. Para manter essa entrega, pedimos doações de itens como arroz, feijão, macarrão, legumes, óleo e temperos.</p>
+          <a href="https://wa.me/5541998071645?text=Ol%C3%A1%2C%20quero%20doar%20alimentos%20para%20o%20Sop%C3%A3o%20Solid%C3%A1rio" target="_blank" rel="noopener noreferrer">Quero doar alimentos →</a>
+        </div>
       </div>
 
       <div class="projeto-stats reveal">
-        <div class="stat"><span class="stat-num">4</span><span class="stat-label">atividades gratuitas por semana</span></div>
-        <div class="stat"><span class="stat-num">3</span><span class="stat-label">frentes de atendimento todo sábado</span></div>
-        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">aberto à comunidade do bairro, sem custo</span></div>
+        <div class="stat"><span class="stat-num">5</span><span class="stat-label">atividades gratuitas por semana</span></div>
+        <div class="stat"><span class="stat-num">2</span><span class="stat-label">dias de atuação: quarta e sábado</span></div>
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">aberto à comunidade, sem custo</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= COMO PARTICIPAR ================= -->
+<!-- COMO PARTICIPAR -->
 <section class="participar">
   <div class="section-head reveal">
     <span class="tag tag-light">Faça parte</span>
@@ -437,7 +460,7 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </section>
 
-<!-- ================= CULTOS ================= -->
+<!-- CULTOS -->
 <section class="cultos" id="cultos">
   <div class="section-head reveal">
     <span class="tag tag-light">Agenda semanal</span>
@@ -456,19 +479,19 @@ button{font-family:inherit;cursor:pointer}
       <p>Louvor, palavra e comunhão — o nosso principal encontro da semana.</p>
     </article>
     <article class="culto-card">
-      <span class="culto-dia">Quarta-feira</span><span class="culto-hora">20h</span>
-      <h3>Culto de Oração</h3>
-      <p>Um momento de intercessão e busca por avivamento em família.</p>
+      <span class="culto-dia">Terça-feira</span><span class="culto-hora">19:30h</span>
+      <h3>Culto nos Lares</h3>
+      <p>Um momento de intercessão e busca por avivamento em família. (Consultar Local) </p>
     </article>
     <article class="culto-card">
-      <span class="culto-dia">Sexta-feira</span><span class="culto-hora">19h30</span>
+      <span class="culto-dia">Sábado</span><span class="culto-hora">19h</span>
       <h3>Ministério Jovem</h3>
       <p>Encontro dedicado aos jovens, com louvor e estudos temáticos.</p>
     </article>
   </div>
 </section>
 
-<!-- ================= CONTRIBUA ================= -->
+<!--CONTRIBUA -->
 <section id="contribua" class="contribua">
   <div class="section-head reveal">
     <span class="tag">Semeando juntos</span>
@@ -500,7 +523,7 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </section>
 
-<!-- ================= LOCALIZAÇÃO ================= -->
+<!-- LOCALIZAÇÃO  -->
 <section id="local" class="local">
   <div class="section-head reveal">
     <span class="tag tag-light">Venha nos visitar</span>
@@ -514,7 +537,7 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </section>
 
-<!-- ================= CONTATO ================= -->
+<!-- CONTATO -->
 <section id="contato" class="contato">
   <div class="contato-inner reveal">
     <div class="contato-text">
@@ -529,7 +552,7 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
