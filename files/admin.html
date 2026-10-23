@@ -413,6 +413,7 @@ tbody tr:hover{background:var(--cream)}
               <option>Balé</option>
               <option>Futebol</option>
               <option>Feirão Solidário</option>
+              <option>Sopão Solidário</option>
               <option>Célula</option>
             </select>
           </div>
@@ -433,7 +434,7 @@ tbody tr:hover{background:var(--cream)}
     </div>
 
     <div class="table-tools no-print">
-      <select id="filtroAtiv"><option value="">Todas as atividades</option><option>Pilates</option><option>Balé</option><option>Futebol</option><option>Feirão Solidário</option><option>Célula</option></select>
+      <select id="filtroAtiv"><option value="">Todas as atividades</option><option>Pilates</option><option>Balé</option><option>Futebol</option><option>Feirão Solidário</option><option>Sopão Solidário</option><option>Célula</option></select>
       <button class="btn btn-ghost btn-sm" id="exportPresenca">Exportar CSV</button>
     </div>
     <div class="table-wrap">
@@ -462,7 +463,7 @@ tbody tr:hover{background:var(--cream)}
         <span class="n">ODS 2</span>
         <h4>Fome zero · meta 2.1</h4>
         <span class="val" id="odsPessoas">0</span>
-        <p>pessoas beneficiadas com acesso a alimentos, somando todos os membros das famílias atendidas.</p>
+        <p>pessoas com acesso a alimentação, somando o Feirão Solidário e o Sopão Solidário aos moradores de rua.</p>
       </div>
       <div class="ods-ind" style="background:#4C9F38">
         <span class="n">ODS 3</span>
@@ -633,7 +634,7 @@ function renderDashboard(){
   barrasHorizontais(document.getElementById('chartOrigem'),porOrigem);
 
   // atividades
-  const ativs=['Pilates','Balé','Futebol','Feirão Solidário','Célula'];
+  const ativs=['Pilates','Balé','Futebol','Feirão Solidário','Sopão Solidário','Célula'];
   const porAtiv=ativs.map(a=>({rotulo:a,valor:db.presencas.filter(p=>p.atividade===a).reduce((s,p)=>s+Number(p.qtd||0),0)})).filter(d=>d.valor>0);
   barrasVerticais(document.getElementById('chartAtividades'),porAtiv,'#4B7A2C');
 
@@ -798,13 +799,14 @@ document.getElementById('exportPresenca').addEventListener('click',()=>baixarCSV
 function renderRelatorio(){
   const familias=db.atendimentos.length;
   const pessoasBenef=db.atendimentos.reduce((a,x)=>a+Number(x.pessoas||0),0);
+  const pessoasSopao=db.presencas.filter(p=>p.atividade==='Sopão Solidário').reduce((a,p)=>a+Number(p.qtd||0),0);
   const saude=db.presencas.filter(p=>p.atividade==='Pilates'||p.atividade==='Futebol').reduce((a,p)=>a+Number(p.qtd||0),0);
   const educacao=db.presencas.filter(p=>p.atividade==='Balé').reduce((a,p)=>a+Number(p.qtd||0),0);
   const inclusao=db.pessoas.filter(p=>p.origem==='Feirão Solidário'||p.origem.startsWith('Projeto Esperança')).length;
   const voluntarios=db.pessoas.filter(p=>p.vinculo==='Voluntário').length;
 
   document.getElementById('odsFamilias').textContent=familias;
-  document.getElementById('odsPessoas').textContent=pessoasBenef;
+  document.getElementById('odsPessoas').textContent=pessoasBenef+pessoasSopao;
   document.getElementById('odsSaude').textContent=saude;
   document.getElementById('odsEducacao').textContent=educacao;
   document.getElementById('odsInclusao').textContent=inclusao;
@@ -820,7 +822,7 @@ function renderRelatorio(){
   })();
 
   document.getElementById('sinteseTexto').textContent =
-    `${periodo.charAt(0).toUpperCase()+periodo.slice(1)}, o Projeto Esperança registrou ${familias} atendimento(s) a famílias no Feirão Solidário, beneficiando de forma direta e indireta ${pessoasBenef} pessoa(s), com média de ${media} família(s) atendida(s) por mês. As atividades esportivas e de bem-estar somaram ${saude} participação(ões) e as aulas de balé, ${educacao}. A comunidade cadastrada reúne ${db.pessoas.length} pessoa(s), sendo ${voluntarios} voluntário(s) ativo(s). O principal canal pelo qual as pessoas conheceram a igreja foi: ${canalTop}.`;
+    `${periodo.charAt(0).toUpperCase()+periodo.slice(1)}, o Projeto Esperança registrou ${familias} atendimento(s) a famílias no Feirão Solidário e ${pessoasSopao} participação(ões) no Sopão Solidário a moradores de rua, beneficiando de forma direta e indireta ${pessoasBenef+pessoasSopao} pessoa(s) com acesso a alimentação, com média de ${media} família(s) atendida(s) por mês no Feirão. As atividades esportivas e de bem-estar somaram ${saude} participação(ões) e as aulas de balé, ${educacao}. A comunidade cadastrada reúne ${db.pessoas.length} pessoa(s), sendo ${voluntarios} voluntário(s) ativo(s). O principal canal pelo qual as pessoas conheceram a igreja foi: ${canalTop}.`;
 }
 
 /* ---------- DADOS DE EXEMPLO ---------- */
@@ -848,11 +850,11 @@ document.getElementById('seedBtn').addEventListener('click',()=>{
         responsavel:nomes[Math.floor(Math.random()*nomes.length)],pessoas:1+Math.floor(Math.random()*6),
         tipo:tipos[Math.floor(Math.random()*tipos.length)],bairro:bairros[Math.floor(Math.random()*bairros.length)],contato:'',obs:''});
     }
-    ['Pilates','Balé','Futebol','Feirão Solidário','Célula'].forEach(a=>{
+    ['Pilates','Balé','Futebol','Feirão Solidário','Sopão Solidário','Célula'].forEach(a=>{
       for(let s=0;s<3;s++){
         const dia=1+Math.floor(Math.random()*27);
         pr.push({id:uid(),data:`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(dia).padStart(2,'0')}`,
-          atividade:a,qtd:a==='Feirão Solidário'?20+Math.floor(Math.random()*25):6+Math.floor(Math.random()*16),resp:''});
+          atividade:a,qtd:(a==='Feirão Solidário'||a==='Sopão Solidário')?20+Math.floor(Math.random()*25):6+Math.floor(Math.random()*16),resp:''});
       }
     });
   }
